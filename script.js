@@ -61,7 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovement = function (movements) {
+const displayMovements = function (movements) {
   movements.array.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
@@ -69,15 +69,13 @@ const displayMovement = function (movements) {
    <div class="movement_row">
    <div class="movements_type movements_type--${type}">${i + 1} ${type}</div>
    <div class="movements_value">${mov}</div>
-   
   </div>
-  
-  
-  
   `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-
+displayMovements(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
