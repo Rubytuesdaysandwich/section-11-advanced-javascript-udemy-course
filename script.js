@@ -423,8 +423,14 @@ console.log(avg1, avg2);
 //you can only chain the method if the method your using returns an array
 //something like reduce cannot have something chained onto it
 const eurToUsd = 1.1;
+console.log(movements);
 const totalDepositsUSD = movements
+  // .filter(mov => mov < 0)
   .filter(mov => mov > 0)
+  // .map((mov, i, arr) => {
+  //   console.log(arr);
+  //   return mov * eurToUsd;
+  // })//----debugging the chain of methods
   .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
