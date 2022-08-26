@@ -79,6 +79,18 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// Computing Usernames bankist app
+const user = 'Steven Thomas Williams'; //stw
+
+const username = user
+  .toLowerCase()
+  .split(' ')
+  .map(name => name[0])
+  .join('');
+
+console.log(username);
+//-- end computing Username
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -262,7 +274,9 @@ elements that passed a specified test condition.*/
 /*reduce boils(reduces) all array 
 elements down to one single value(e.g. 
   adding all elements together).*/
+
 //------------Map method
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurToUsd = 1.1;
@@ -272,7 +286,7 @@ const eurToUsd = 1.1;
 // });
 //these two are the same but one is an arrow function movementsUSD
 const movementsUSD = movements.map(
-  mov => /*this is being returned-->*/ mov * eurToUsd
+  mov =>  mov * eurToUsd
 );
 console.log(movements);
 //the map method is not mutating the array.
@@ -285,6 +299,7 @@ console.log(movementsUSDfor);
 
 const movementsDescriptions = movements.map(
   (mov, i) =>
+    //ternary operator
     `Movement${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'}${Math.abs(
       mov
     )}`
@@ -294,6 +309,10 @@ const movementsDescriptions = movements.map(
   } else {
     return `Movement${i + 1}: You withdrew ${Math.abs(mov)}`;
   }*/
+/*
 );
 
 console.log(movementsDescriptions);
+*/
+//------------end map method
+//!================
