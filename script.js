@@ -91,10 +91,12 @@ const createUsernames = function (accs) {
   });
 };
 //calculate the dollars in the account
+//this is part of the display movements
 const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  const balance = movements.reduce((acc, mov) => acc + mov, 0); //get the sum of the account total
   labelBalance.textContent = `${balance} EUR`;
 };
+calcDisplayBalance(account1.movements); //display the balance to the user
 //calculate the dollars in the account
 createUsernames(accounts);
 console.log(accounts);
