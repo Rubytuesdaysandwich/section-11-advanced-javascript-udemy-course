@@ -70,7 +70,7 @@ const displayMovements = function (movements) {
     <div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1}${type}</div>
     <div class="movements__date">3 days ago</div>
-    <div class="movements__value">${mov}</div>
+    <div class="movements__value">${mov}€</div>
   </div>
   `;
 
@@ -91,15 +91,32 @@ const createUsernames = function (accs) {
   });
 };
 //calculate the dollars in the account
-//this is part of the display movements
+//!
+//----this is part of the display movements
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0); //get the sum of the account total
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements); //display the balance to the user
-//calculate the dollars in the account
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textcontent = `${out}€`;
+};
+calcDisplaySummary(account1.movements);
+calcDisplaySummary;
+//!
+//----calculate the dollars in the account
 createUsernames(accounts);
 console.log(accounts);
+
 // console.log(createUsernames('Steven Thomas Williams'));
 // const user = ''; //stw
 
