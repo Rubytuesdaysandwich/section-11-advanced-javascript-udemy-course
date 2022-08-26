@@ -90,7 +90,12 @@ const createUsernames = function (accs) {
       .join('');
   });
 };
-
+//calculate the dollars in the account
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+//calculate the dollars in the account
 createUsernames(accounts);
 console.log(accounts);
 // console.log(createUsernames('Steven Thomas Williams'));
@@ -109,7 +114,7 @@ console.log(accounts);
 //todo   ['GBP', 'Pound sterling'],
 //todo ]);
 
-// todo has been moved const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 // methods are functions we can call on objects
@@ -324,3 +329,36 @@ console.log(movementsDescriptions);
 */
 //------------end map method
 //!================
+//-----------filter method
+/*
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0);
+console.log(depositsFor);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+*/
+//-----------end filter method
+//----------reduce method
+console.log(movements);
+//acc --> accumulator
+//accumulator is like a snowball
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+// console.log(balance);
+//----arrow function method//this is alternate method
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balance);
+//---- end arrow function method
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+//----------end reduce method
