@@ -111,9 +111,14 @@ const calcDisplaySummary = function (movements) {
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
   const interest = movements
-    .filter(mov => mov < 0)
+    .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
-    .reduce((acc, int) => acc + i, 0);
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
 };
 calcDisplaySummary(account1.movements);
 
@@ -444,6 +449,8 @@ console.log(avg1, avg2);
 //--------chaining methods
 //you can only chain the method if the method your using returns an array
 //something like reduce cannot have something chained onto it
+//!keep chaining methods to a minimum causing performance issues because the creation of arrays take up space
+//!splice,slice methods and any methods that mutate arrays is a bad practice
 const eurToUsd = 1.1;
 console.log(movements);
 const totalDepositsUSD = movements
@@ -457,3 +464,8 @@ const totalDepositsUSD = movements
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
 //--------end chaining methods
+//!=============
+//------- coding challenge #3
+
+//------- coding challenge #3 end
+//!=================
