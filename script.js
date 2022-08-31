@@ -114,7 +114,7 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      //console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -125,17 +125,49 @@ calcDisplaySummary(account1.movements);
 //!
 //----calculate the dollars in the account
 createUsernames(accounts);
-console.log(accounts);
+//console.log(accounts);
 
 // console.log(createUsernames('Steven Thomas Williams'));
 // const user = ''; //stw
 
 // console.log(username);
 //-- end computing Username
+//--------login being implemented
+//event handler
+let currentAccount;
+
+btnLogin.addEventListener('click',function(e){
+  //prevent from submitting
+  e.preventDefault()
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currentAccount);
+  //Number causes it to read as a number value and not a string
+  if(currentAccount?.pin === Number(inputLoginPin.value)){
+    //display the UI and message
+labelWelcome.textContent=`Welcome back, ${currentAccount.owner.split(' ')[0]}`
+
+
+    //display movements
+
+
+    //display balance
+
+
+    //display summary
+    
+    
+    
+    
+    console.log('LOGIN');
+  }
+  
+})
+
+//--------end login being implemented
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-// LECTURES
+// LECTURES ▼
 
 //todo has been moved const currencies = new Map([
 //todo   ['USD', 'United States dollar'],
@@ -493,4 +525,22 @@ const avg2 = calcAverageHumanAge([16,6,10,5,6,1,4]);
 */
 
 //------- coding challenge #3 end
+//!=================
+//------- The find method
+//retrieve one element of an array based on a condition
+//accepts a call back function
+/*
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner==='Jessica Davis')
+console.log(account);
+*/
+//------- end The find method
+//!=================
+//--------login
+// located in the data at the top with the bankist project
+//--------login
 //!=================
