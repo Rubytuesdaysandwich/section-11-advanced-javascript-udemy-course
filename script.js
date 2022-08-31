@@ -77,7 +77,7 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
+//todo delete displayMovements(account1.movements);
 
 // Computing Usernames bankist app
 //accs = to accounts
@@ -97,22 +97,22 @@ const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0); //get the sum of the account total
   labelBalance.textContent = `${balance}€`;
 };
-calcDisplayBalance(account1.movements); //display the balance to the user
+//todo delete calcDisplayBalance(account1.movements); //display the balance to the user
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       //console.log(arr);
       return int >= 1;
@@ -120,7 +120,7 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
+//todo delete calcDisplaySummary(account1.movements);
 
 //!
 //----calculate the dollars in the account
@@ -139,22 +139,28 @@ let currentAccount;
 btnLogin.addEventListener('click',function(e){
   //prevent from submitting
   e.preventDefault()
+//find the current account based on their username value from accounts array
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
   console.log(currentAccount);
   //Number causes it to read as a number value and not a string
   if(currentAccount?.pin === Number(inputLoginPin.value)){
     //display the UI and message
 labelWelcome.textContent=`Welcome back, ${currentAccount.owner.split(' ')[0]}`
+//change the opacity of the page from 0 to 100 upon user login
+ containerApp.style.opacity = 100;
+//clear input fields
+inputLoginUsername.value= inputLoginPin.value='';
+inputLoginPin.blur();
 
 
     //display movements
 
-
+    displayMovements(currentAccount.movements);
     //display balance
-
+    calcDisplayBalance(currentAccount.movements);
 
     //display summary
-    
+    calcDisplaySummary(currentAccount);
     
     
     
