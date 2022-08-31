@@ -451,21 +451,46 @@ console.log(avg1, avg2);
 //something like reduce cannot have something chained onto it
 //!keep chaining methods to a minimum causing performance issues because the creation of arrays take up space
 //!splice,slice methods and any methods that mutate arrays is a bad practice
-const eurToUsd = 1.1;
-console.log(movements);
-const totalDepositsUSD = movements
+//const eurToUsd = 1.1;
+//console.log(movements);
+//const totalDepositsUSD = movements
   // .filter(mov => mov < 0)
-  .filter(mov => mov > 0)
+  //.filter(mov => mov > 0)
   // .map((mov, i, arr) => {
   //   console.log(arr);
   //   return mov * eurToUsd;
   // })//----debugging the chain of methods
-  .map(mov => mov * eurToUsd)
-  .reduce((acc, mov) => acc + mov, 0);
-console.log(totalDepositsUSD);
+  //.map(mov => mov * eurToUsd)
+  //.reduce((acc, mov) => acc + mov, 0);
+//console.log(totalDepositsUSD);
 //--------end chaining methods
 //!=============
 //------- coding challenge #3
+/*rewrite the 'calAverageHumanAge' function from the previous challenge, but this time as an arrow function and using chaining!
+
+TEST DATA:[5,2,4,1,15,8,3]
+TEST DATA:[16,6,10,5,6,1,4]
+GOOD LUCK 😊
+*/
+
+/*
+const calcAverageHumanAge =(ages) => {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+  .filter(age => age >= 18)
+ // const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+  //  reduce the array into a single number
+ .reduce(
+    (acc, age, i, arr) => acc + age / arr.length,
+    0
+  );
+  //adult.length
+ console.log(humanAges);
+  // 2 3.(2+3)/2 = 2.5 === 2/2+2/3 = 2.5
+  
+};
+const avg1 = calcAverageHumanAge([5,2,4,1,15,8,3]);
+const avg2 = calcAverageHumanAge([16,6,10,5,6,1,4]);
+*/
 
 //------- coding challenge #3 end
 //!=================
