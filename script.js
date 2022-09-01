@@ -123,7 +123,7 @@ const calcDisplaySummary = function (acc) {
 };
 //todo delete calcDisplaySummary(account1.movements);
 
-//!
+//!========
 //----calculate the dollars in the account
 createUsernames(accounts);
 //console.log(accounts);
@@ -149,7 +149,7 @@ const updateUI = function (acc) {
 //---------UPDATE USER INTERFACE
 
 let currentAccount;
-
+//!===========
 btnLogin.addEventListener('click', function (e) {
   //prevent from submitting
   e.preventDefault();
@@ -178,6 +178,7 @@ btnLogin.addEventListener('click', function (e) {
 });
 
 //--------end login being implemented
+//!===========
 //-------- btn transfer
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
@@ -206,7 +207,7 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 //-------- end btn transfer
-
+//!===========
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   console.log('delete');
@@ -229,8 +230,10 @@ btnClose.addEventListener('click', function (e) {
     //Hide UI
     containerApp.style.opacity = 0;
   }
+  // making the user no longer exsist after being deleted
+  inputCloseUsername.value = inputClosePin.value = '';
 });
-
+//!===========
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES ▼
