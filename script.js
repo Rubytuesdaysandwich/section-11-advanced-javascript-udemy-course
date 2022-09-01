@@ -135,6 +135,19 @@ createUsernames(accounts);
 //-- end computing Username
 //--------login being implemented
 //event handler
+
+//---------UPDATE USER INTERFACE
+const updateUI = function (acc) {
+  //display movements
+  displayMovements(acc.movements);
+  //display balance
+  calcDisplayBalance(acc);
+  //display summary
+  calcDisplaySummary(acc);
+};
+
+//---------UPDATE USER INTERFACE
+
 let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
@@ -158,14 +171,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     //display movements
-
-    displayMovements(currentAccount.movements);
-    //display balance
-    calcDisplayBalance(currentAccount);
-
-    //display summary
-    calcDisplaySummary(currentAccount);
-
+    //update the user interface
+    updateUI(currentAccount);
     console.log('LOGIN');
   }
 });
@@ -181,17 +188,49 @@ btnTransfer.addEventListener('click', function (e) {
   );
   console.log(amount, receiverAcc);
   //if the amount given is larger than money held it will not transfer
+  //will reset the values in the boxes to a default value upon submission
+  inputTransferAmount.value = inputTransferTo.value = '';
   if (
     amount > 0 &&
-    // receiverAcc &&
+    receiverAcc &&
     currentAccount.balance >= amount &&
     //check to see if receiver account exists ?.
     receiverAcc?.username !== currentAccount.username
   ) {
-    console.log('TRANSFER VALID');
+    //doing the transfer pushing amounts into the movements array item of the accounts object
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // update user interface
+    updateUI(currentAccount);
   }
 });
 //-------- end btn transfer
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('delete');
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    //check if index exists
+    //indexOf(23);
+
+    //delete accounts
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES ▼
