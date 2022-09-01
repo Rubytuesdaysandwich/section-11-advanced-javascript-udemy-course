@@ -93,9 +93,10 @@ const createUsernames = function (accs) {
 //calculate the dollars in the account
 //!
 //----this is part of the display movements
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0); //get the sum of the account total
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0); //get the sum of the account total
+
+  labelBalance.textContent = `${acc.balance}€`;
 };
 //todo delete calcDisplayBalance(account1.movements); //display the balance to the user
 
@@ -160,7 +161,7 @@ btnLogin.addEventListener('click', function (e) {
 
     displayMovements(currentAccount.movements);
     //display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
 
     //display summary
     calcDisplaySummary(currentAccount);
@@ -179,6 +180,16 @@ btnTransfer.addEventListener('click', function (e) {
     acc => acc.username === inputTransferTo.value
   );
   console.log(amount, receiverAcc);
+  //if the amount given is larger than money held it will not transfer
+  if (
+    amount > 0 &&
+    // receiverAcc &&
+    currentAccount.balance >= amount &&
+    //check to see if receiver account exists ?.
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    console.log('TRANSFER VALID');
+  }
 });
 //-------- end btn transfer
 /////////////////////////////////////////////////
