@@ -170,7 +170,17 @@ btnLogin.addEventListener('click', function (e) {
 });
 
 //--------end login being implemented
-
+//-------- btn transfer
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('TRANSFER');
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  console.log(amount, receiverAcc);
+});
+//-------- end btn transfer
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES ▼
