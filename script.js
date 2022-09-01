@@ -700,15 +700,17 @@ implemented by the provided function.
 */
 //!=================
 //--------flat method
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+
+//const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 //remove nested arrays
 /*The flat() method creates a new array with all 
 sub-array elements concatenated into it recursively 
 up to the specified depth.*/
-console.log(arr.flat());
+//console.log(arr.flat());
 //
-const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
-console.log(arrDeep.flat(2));
+//const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+//console.log(arrDeep.flat(2));
+
 //the depth at which the flat method
 //is defaulted to 1 however it can accept a parameter
 //to flatten an array at deeper nested levels
@@ -723,13 +725,13 @@ It is identical to a map() followed by a flat() of depth
  efficient than calling those two methods separately. */
 
 //!▼ const accountMovements = accounts.map(acc => acc.movements);
-//*this has been compacted into a stringed method below
-// console.log(accountMovements);
-// const allMovements = accountMovements.flat();
-// console.log(allMovements);
-// const overalBalance = allMovements.reduce((acc, move) => acc + move, 0);
+////this has been compacted into a stringed method below
+//// console.log(accountMovements);
+//// const allMovements = accountMovements.flat();
+//// console.log(allMovements);
+//// const overalBalance = allMovements.reduce((acc, move) => acc + move, 0);
 //!▲ console.log(overalBalance);
-
+/*
 const overalBalance = accounts
   .map(acc => acc.movements)
   .flat()
@@ -740,5 +742,6 @@ const overalBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, move) => acc + move, 0);
 console.log(overalBalance);
+*/
 //-----end flatmap method
 //!================
