@@ -208,6 +208,7 @@ btnTransfer.addEventListener('click', function (e) {
 });
 //-------- end btn transfer
 //!===========
+//-------- CLOSE ACCOUNT
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   console.log('delete');
@@ -216,6 +217,13 @@ btnClose.addEventListener('click', function (e) {
     inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
   ) {
+    //*findIndex method selects the index
+    //findIndex can take more complicated arguments then indexOf can
+    /*The findIndex() method returns the index of the 
+    first element in an array that satisfies 
+    the provided testing function. If no elements 
+    satisfy the testing function, -1 is returned
+    */
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
     );
@@ -230,9 +238,10 @@ btnClose.addEventListener('click', function (e) {
     //Hide UI
     containerApp.style.opacity = 0;
   }
-  // making the user no longer exsist after being deleted
+  // making the user no longer exist after being deleted
   inputCloseUsername.value = inputClosePin.value = '';
 });
+//--------end CLOSE ACCOUNT
 //!===========
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -613,3 +622,44 @@ console.log(account);
 // located in the data at the top with the bankist project
 //--------login
 //!=================
+//--- the findIndex method
+/*
+The findIndex() method returns the index 
+of the first element in an array that 
+satisfies the provided testing function. 
+If no elements satisfy the testing function, -1 is 
+returned.
+*/
+/*
+const index = accounts.findIndex(
+  acc => acc.username === currentAccount.username
+);
+console.log(index);
+*/
+//----end findIndex method
+//!======================
+//-----some and every
+console.log(movements);
+
+/*
+The some() method tests whether at least one element in 
+the array passes the test implemented by the provided 
+function. It returns true if, in the array, it finds an 
+element for which the provided function returns true; 
+otherwise it returns false. It doesn't modify the array.
+*/
+//EQUALITY
+console.log(movements.includes(-130));
+
+//CONDITION
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+/*
+The every() method tests whether all elements in the 
+array pass the test implemented by the provided 
+function. It returns a Boolean value.
+*/
+//----- end some and every
