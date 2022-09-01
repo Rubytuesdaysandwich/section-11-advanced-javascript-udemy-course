@@ -656,7 +656,7 @@ console.log(index);
 //----end findIndex method
 //!======================
 //-----some and every
-console.log(movements);
+//console.log(movements);
 
 /*
 The some() method tests whether at least one element in 
@@ -666,13 +666,14 @@ element for which the provided function returns true;
 otherwise it returns false. It doesn't modify the array.
 */
 //EQUALITY
-console.log(movements.includes(-130));
+
+//console.log(movements.includes(-130));
 
 // some :CONDITION
-console.log(movements.some(mov => mov === -130));
+//console.log(movements.some(mov => mov === -130));
 
-const anyDeposits = movements.some(mov => mov > 0);
-console.log(anyDeposits);
+//const anyDeposits = movements.some(mov => mov > 0);
+//console.log(anyDeposits);
 
 /*
 The every() method tests whether all elements in the 
@@ -681,14 +682,15 @@ function. It returns a Boolean value.
 */
 
 //EVERY
-console.log(movements.every(mov => mov > 0));
-console.log(account4.movements.every(mov => mov > 0));
+//console.log(movements.every(mov => mov > 0));
+//console.log(account4.movements.every(mov => mov > 0));
 
 //separate callback
-const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+//const deposit = mov => mov > 0;
+//console.log(movements.some(deposit));
+//console.log(movements.every(deposit));
+//console.log(movements.filter(deposit));
+
 //----- end some and every
 
 /* The filter() method creates a shallow copy of a
@@ -696,3 +698,22 @@ portion of a given array, filtered down to just the
 elements from the given array that pass the test
 implemented by the provided function.
 */
+//!=================
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+//remove nested arrays
+/*The flat() method creates a new array with all 
+sub-array elements concatenated into it recursively 
+up to the specified depth.*/
+console.log(arr.flat());
+
+/*The flatMap() method returns a new array formed by 
+applying a given callback function to each element of 
+the array, and then flattening the result by one level. 
+It is identical to a map() followed by a flat() of depth
+ 1 (arr.map(...args).flat()), but slightly more 
+ efficient than calling those two methods separately. */
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+//the depth at which the flat map
+//is defaulted to 1 however it can accept a parameter
+//to flatten an array at deeper nested levels
