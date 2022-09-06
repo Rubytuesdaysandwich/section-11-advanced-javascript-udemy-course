@@ -270,7 +270,7 @@ btnClose.addEventListener('click', function (e) {
 
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
-  e.preventDefault();
+  e.preventDefault(); //prevent the page from reloading
   displayMovements(currentAccount.movements, !sorted);
   //if sorted set to false it will set it to true
   //if sorted set to true it will set it to false
