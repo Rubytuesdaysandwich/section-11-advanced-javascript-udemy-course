@@ -766,6 +766,7 @@ console.log(overalBalance);
 //!================
 // Sorting Arrays
 // expected output of this array being sorted ['Adam', 'Jonas', 'Martha', 'Zach']
+/*
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 
 console.log(owners.sort());
@@ -796,5 +797,21 @@ console.log(movements);
 movements.sort((a, b) => b - a);
 console.log(movements);
 console.log(movements);
+*/
 // Sorting Arrays
+//!===================
+// More Ways of Creating and Filling Array
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+const x = new Array(7); //array constructor making an array the length defined in the parentheses *7
+console.log(x); //logging the x array to the console
+//console.log(x.map(() => 5)); //does not work too add this map to the new Array
+//x.fill(1); //makes the x array filled with 1's
+x.fill(1, 3, 5);
+console.log(x);
+arr.fill(23, 4, 6);
+console.log(arr);
+//array.from
+Array.from({length:7},())
+// More Ways of Creating and Filling Array
 //!===================
