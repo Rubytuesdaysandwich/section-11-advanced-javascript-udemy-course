@@ -839,3 +839,7 @@ labelBalance.addEventListener('click', function () {
 //arrays can be created from iterables in javascript like strings
 // More Ways of Creating and Filling Array
 //!===================
+// Summary: Which Array Method to Use?
+
+// Summary: Which Array Method to Use?
+//!=====================
