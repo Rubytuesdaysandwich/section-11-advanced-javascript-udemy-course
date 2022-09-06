@@ -818,12 +818,24 @@ arr.fill(23, 4, 6);
 console.log(arr);
 //array.from method
 const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+console.log(y); // output = [1, 1, 1, 1, 1, 1, 1]
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
-const movementsUI = Array.from(document.querySelectorAll('.movements_value'));
-console.log(movementsUI);
+console.log(z); //output=[1, 2, 3, 4, 5, 6, 7]
 
+//// const movementsUI = Array.from(
+////   document.querySelectorAll('.movements__value')
+//// );
+//// console.log(movementsUI);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+});
 //arrays can be created from iterables in javascript like strings
 // More Ways of Creating and Filling Array
 //!===================
