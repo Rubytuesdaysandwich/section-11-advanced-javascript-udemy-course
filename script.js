@@ -61,9 +61,16 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
+  //sorting arrays ascending order
+  //if sort set to true it is sliced and sorted into ascending order
+  //if sort is false then it should equal the movements which is not put in ascending order
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  //sorting arrays end
+
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -260,6 +267,16 @@ btnClose.addEventListener('click', function (e) {
 });
 //--------end CLOSE ACCOUNT
 //!===========
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  //if sorted set to false it will set it to true
+  //if sorted set to true it will set it to false
+  sorted = !sorted;
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES ▼
