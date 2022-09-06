@@ -765,6 +765,7 @@ console.log(overalBalance);
 //-----end flatmap method
 //!================
 // Sorting Arrays
+// expected output of this array being sorted ['Adam', 'Jonas', 'Martha', 'Zach']
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 
 console.log(owners.sort());
