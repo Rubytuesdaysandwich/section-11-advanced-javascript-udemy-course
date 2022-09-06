@@ -726,12 +726,14 @@ It is identical to a map() followed by a flat() of depth
 
 //!▼ const accountMovements = accounts.map(acc => acc.movements);
 ////this has been compacted into a stringed method below
-//// console.log(accountMovements);
-//// const allMovements = accountMovements.flat();
-//// console.log(allMovements);
+//// console.log(accountMovements);//send the account movements to the consolc
+//// const allMovements = accountMovements.flat();//all movements equal account movements and are  method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+//// console.log(allMovements);//send all movements to console
 //// const overalBalance = allMovements.reduce((acc, move) => acc + move, 0);
 //!▲ console.log(overalBalance);
 /*
+
+this is using chaining methods to achieve getting the balance
 const overalBalance = accounts
   .map(acc => acc.movements)
   .flat()
@@ -745,3 +747,36 @@ console.log(overalBalance);
 */
 //-----end flatmap method
 //!================
+// Sorting Arrays
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+
+console.log(owners.sort());
+
+console.log(owners);
+
+console.log(movements);
+
+//return < 0, A, B (Keep order)
+//return > 0, B A (switch order)
+
+//Ascending
+//if a is greater than b it will be a positive number
+// a is lesss than b it will b a negative number
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+//Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
+console.log(movements);
+// Sorting Arrays
+//!===================
