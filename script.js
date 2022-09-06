@@ -803,15 +803,27 @@ console.log(movements);
 // More Ways of Creating and Filling Array
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+//empty arrays + fill method
 const x = new Array(7); //array constructor making an array the length defined in the parentheses *7
 console.log(x); //logging the x array to the console
 //console.log(x.map(() => 5)); //does not work too add this map to the new Array
-//x.fill(1); //makes the x array filled with 1's
+
+//fill with 1 starting at 3 and ending at position 5
 x.fill(1, 3, 5);
+x.fill(1); //makes the x array filled with 1's
 console.log(x);
+//fill the array with 23 and start at 4 and end at position 6
+//this will also mutate the arr array into [1, 2, 3, 4, 23, 23, 7]
 arr.fill(23, 4, 6);
 console.log(arr);
-//array.from
-Array.from({length:7},())
+//array.from method
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+const movementsUI = Array.from(document.querySelectorAll('.movements_value'));
+console.log(movementsUI);
+
+//arrays can be created from iterables in javascript like strings
 // More Ways of Creating and Filling Array
 //!===================
