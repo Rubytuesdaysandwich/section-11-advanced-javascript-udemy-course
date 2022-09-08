@@ -917,7 +917,35 @@ let a = 10;
 console.log(++a);
 console.log(a);
 // exercise #3
+//get the accounts movements withdrawals and deposits
+//flatmap of accounts and their movements to showw deposits and withdrawals
+//reduce the total withdrawals and depositsto a singular number from the accounts . movements array
+const sums = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);//*refactored into sums[cur > 0 ? 'deposits' : 'withdrawals'] + cur;
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] + cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+console.log(deposits, withdrawals);
 // exercise #4
+//this is a nice title -> This IS a NICE TITLTE
+const convertTitleCase = function (titlte) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const titleCase = title
+    .toLowerCase()
+    .split()
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  // return titleCase;
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this i a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
 //------ Array Methods Practice
 //!====================
 // Coding Challenge #4
