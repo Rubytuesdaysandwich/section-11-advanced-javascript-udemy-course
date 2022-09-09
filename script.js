@@ -910,7 +910,7 @@ console.log(bankDepositSum);
 const numDeposits1000 = accounts
   .flatMap(acc => acc.movements)
   // .reduce((count, cur) => (cur > +1000 ? count + 1 : count), 0);
-  .reduce((count, cur) => (cur > +1000 ? ++count : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
 console.log(numDeposits1000);
 //prefixed ++ operator
 let a = 10;
@@ -918,9 +918,9 @@ console.log(++a);
 console.log(a);
 // exercise #3
 //get the accounts movements withdrawals and deposits
-//flatmap of accounts and their movements to showw deposits and withdrawals
-//reduce the total withdrawals and depositsto a singular number from the accounts . movements array
-const sums = accounts
+//flatmap of accounts and their movements to show deposits and withdrawals
+//reduce the total withdrawals and deposits to a singular number from the accounts . movements array
+const { deposits, withdrawals } = accounts
   .flatMap(acc => acc.movements)
   .reduce(
     (sums, cur) => {
@@ -932,12 +932,13 @@ const sums = accounts
   );
 console.log(deposits, withdrawals);
 // exercise #4
-//this is a nice title -> This IS a NICE TITLTE
-const convertTitleCase = function (titlte) {
-  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+//this is a nice title -> This IS a NICE TITLTE//This is a function to convert title case with exceptions that do not get capitalized.
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with']; //contains exceptions that the titleCase does not effect
   const titleCase = title
     .toLowerCase()
-    .split()
+    .split(' ')
     .map(word => (exceptions.includes(word) ? word : capitalize(word)))
     .join(' ');
   // return titleCase;
