@@ -1021,3 +1021,9 @@ console.log(dogs.some(dog => dog.curFood === dog.recFood));
 const checkEatingOkay = dog =>
   dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1; //check if the dogs are eating an okay amount looping through them with the some method
 console.log(dogs.some(checkEatingOkay));
+//7.
+console.log(dogs.filter(checkEatingOkay));
+//8.
+//sort it by recommended food portion in an ascending order[1,2,3];
+const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(dogsSorted);
