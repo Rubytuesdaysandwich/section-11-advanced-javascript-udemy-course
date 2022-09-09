@@ -998,4 +998,23 @@ console.log(
 );
 
 //3.
-// const ownersEatTooMuch
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+
+//4.
+//Matilda and Alice and bob's dogs eat too much!
+//Sarah and john and Michael's dogs eat too little
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat to little!`);
+//5.
+console.log(dogs.some(dog => dog.curFood === dog.recFood));
+
+//6.
+console.log(dogs.some(dog => dog.curFood === dog.recFood));
