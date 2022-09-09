@@ -1015,6 +1015,9 @@ console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
 console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat to little!`);
 //5.
 console.log(dogs.some(dog => dog.curFood === dog.recFood));
-
+//check to see if any of the dogs are eating an exact amount equal to the recommended amount
 //6.
-console.log(dogs.some(dog => dog.curFood === dog.recFood));
+//current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
+const checkEatingOkay = dog =>
+  dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1; //check if the dogs are eating an okay amount looping through them with the some method
+console.log(dogs.some(checkEatingOkay));
